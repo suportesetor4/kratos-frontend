@@ -5,6 +5,7 @@ import InputFormCadastro from "../ui/input-form-cadastro";
 import { useEffect, useState } from "react";
 
 const fira_sans = Fira_Sans({
+  subsets: ["latin"],
   weight: ["400"]
 });
 

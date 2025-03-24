@@ -2,6 +2,7 @@ import LoginForm from "@/components/login/login-form";
 import { Fira_Sans } from "next/font/google";
 
 const fira_sans = Fira_Sans({
+  subsets: ["latin"],
   weight: ["400"]
 });
 
