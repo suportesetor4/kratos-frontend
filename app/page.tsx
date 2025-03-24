@@ -12,7 +12,7 @@ export default function Home() {
 
   async function isClientLoggedIn(){
     // verify if user has token in localstorage
-    if(isLogged){
+    if(!isLogged){
       router.push("login")
     } 
   }
