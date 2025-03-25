@@ -3,6 +3,10 @@
 import InputFormCadastro from "../ui/input-form-cadastro";
 import { useEffect, useState } from "react";
 
+import localFont from 'next/font/local'
+const gothamLight = localFont({ src: '../../fonts/gothamXlight.otf' })
+
+
 function getRandomName(){
     const names = [
         "cleberson", 
@@ -51,7 +55,7 @@ export default function LoginForm(){
                     tipoInput="text"
                     setInput={setUsername}
                     addStyleMain="w-2/3 self-center"
-                    addStyleDivInput="text-white py-2 text-lg"
+                    addStyleDivInput={`${gothamLight.className} text-white py-2 text-lg`}
                     addStyleDivTitle="text-xl"
                     />
                 <InputFormCadastro 
@@ -61,7 +65,7 @@ export default function LoginForm(){
                     showPassword
                     setInput={setUsername}
                     addStyleMain="w-2/3 self-center"
-                    addStyleDivInput="text-white py-2 text-lg"
+                    addStyleDivInput={`${gothamLight.className} text-white py-2 text-lg`}
                     addStyleDivTitle="text-xl"
 
 
@@ -69,7 +73,9 @@ export default function LoginForm(){
 
                 <div className="flex flex-col items-center justify-center gap-2 w-full">
                     <button className="bg-gradient-to-r from-red-700 to-red-900 w-2/3 p-3 rounded-sm cursor-pointer hover:opacity-85">Login</button>
-                    <p className="hover:underline cursor-pointer text-sm">Esqueceu a senha?</p>
+                    <p className={`${gothamLight.className} text-center text-sm hover:underline cursor-pointer `}>Esqueceu a senha?</p>
+                    <p className={`${gothamLight.className} text-center text-sm hover:underline cursor-pointer `}>Registrar-se</p>
+
                 </div>
 
             </div>
