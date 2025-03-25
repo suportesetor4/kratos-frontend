@@ -40,6 +40,7 @@ interface InputFormCadastroProps {
   maskType?: InputFormatType;
   isRequired?: boolean;
   addStyleDivInput?: string;
+  addStyleDivTitle?: string;
 }
 
 export default function InputFormCadastro({
@@ -53,7 +54,8 @@ export default function InputFormCadastro({
   showPassword,
   maskType,
   isRequired,
-  addStyleDivInput
+  addStyleDivInput,
+  addStyleDivTitle
 }: InputFormCadastroProps) {
   const [valor, setValor] = useState(inputValue);
   const [tipoInputAtual, setTipoInputAtual] = useState(tipoInput);
@@ -78,11 +80,11 @@ export default function InputFormCadastro({
   }
 
   return (
-    <div className={`flex flex-col ${addStyleMain ? addStyleMain : 'full'}`}>
-      {titulo && <label className="tracking-wide text-sm font-semibold mb-1">{titulo} {isRequired && <span className="text-red-500">*</span>}</label>}
+    <div className={`flex flex-col text-sm ${addStyleMain ? addStyleMain : 'full'}`}>
+      {titulo && <label className={`${addStyleDivTitle ? addStyleDivTitle: ''} tracking-wide text-2xl font-semibold mb-1`}>{titulo} {isRequired && <span className="text-red-500">*</span>}</label>}
 
     
-      <div className={`${addStyleDivInput ? addStyleDivInput: ''} flex items-center border-2 rounded-lg px-4 py-2 ${erro ? "border-red-500" : "border-gray-300"} w-full`}>
+      <div className={`rounded-lg px-4 py-2 flex items-center border w-full ${addStyleDivInput ? addStyleDivInput: ''} ${erro ? "border-red-500" : "border-gray-300"} `}>
         <input
           type={tipoInputAtual}
           className="w-full outline-none"

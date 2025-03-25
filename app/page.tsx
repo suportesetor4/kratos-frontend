@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Login from "./login/page";
 import { useRouter } from "next/navigation";
 
-const isLogged = true
+const isLogged = false
 
 export default function Home() {
 

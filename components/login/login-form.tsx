@@ -1,13 +1,7 @@
 "use client"
 
-import { Fira_Sans } from "next/font/google"
 import InputFormCadastro from "../ui/input-form-cadastro";
 import { useEffect, useState } from "react";
-
-const fira_sans = Fira_Sans({
-  subsets: ["latin"],
-  weight: ["400"]
-});
 
 function getRandomName(){
     const names = [
@@ -21,7 +15,6 @@ function getRandomName(){
         "aunibson", 
         "linhares", 
         "gabriel", 
-        "polese",
         "brenda",
         "lucas",
         "luisa",
@@ -45,20 +38,21 @@ export default function LoginForm(){
     }, [])
 
     return(
-        <div className={`${fira_sans.className} flex flex-col gap-10 w-1/2 h-1/2 rounded-sm bg-neutral-800 shadow`}>
+        <div className={` flex flex-col w-1/2 h-screen justify-center items-center gap-5`}>
 
-            <div className="h-1/12">
-                <h1 className="mt-5 text-4xl text-center text-white bg-clip-text">Kratos</h1>
+            <div className="w-2/3 my-5">
+                <h1 className={`text-6xl font-bold tracking-tighter bg-gradient-to-r from-red-700 to-red-900 text-transparent bg-clip-text`}>KRATOS</h1>
             </div>
 
-            <div className="h-11/12 flex flex-col justify-center items-center gap-8 border-t border-neutral-700">
+            <div className="flex flex-col w-full gap-4 text-2xl">
                 <InputFormCadastro 
                     titulo="Usuário"
                     placeholder={randomName || "..."}
                     tipoInput="text"
                     setInput={setUsername}
-                    addStyleMain="w-4/5 self-center"
-                    addStyleDivInput="text-white"
+                    addStyleMain="w-2/3 self-center"
+                    addStyleDivInput="text-white py-2 text-lg"
+                    addStyleDivTitle="text-xl"
                     />
                 <InputFormCadastro 
                     titulo="Senha"
@@ -66,14 +60,16 @@ export default function LoginForm(){
                     tipoInput="password"
                     showPassword
                     setInput={setUsername}
-                    addStyleMain="w-4/5 self-center"
-                    addStyleDivInput="text-white"
+                    addStyleMain="w-2/3 self-center"
+                    addStyleDivInput="text-white py-2 text-lg"
+                    addStyleDivTitle="text-xl"
+
 
                 />
 
                 <div className="flex flex-col items-center justify-center gap-2 w-full">
-                    <button className="bg-red-900 w-4/5 p-3 rounded-sm cursor-pointer hover:opacity-85">Login</button>
-                    <p className="text-sm hover:underline cursor-pointer">Esqueceu a senha?</p>
+                    <button className="bg-gradient-to-r from-red-700 to-red-900 w-2/3 p-3 rounded-sm cursor-pointer hover:opacity-85">Login</button>
+                    <p className="hover:underline cursor-pointer text-sm">Esqueceu a senha?</p>
                 </div>
 
             </div>

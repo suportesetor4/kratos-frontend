@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-});
+import localFont from 'next/font/local'
+ 
+// Font files can be colocated inside of `pages`
+const gothamBlack = localFont({ src: '../fonts/gothamBlack.otf' })
 
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased`}
+        className={`${gothamBlack.className} antialiased`}
       >
         {children}
       </body>
