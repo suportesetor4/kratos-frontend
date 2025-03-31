@@ -1,28 +1,34 @@
 "use client"
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { isClientLoggedIn, logout } from "@/utils/auth-functions";
+import Loading from "@/components/ui/loading";
 
-const isLogged = false
+
 
 export default function Home() {
-
   const router = useRouter()
 
-  async function isClientLoggedIn(){
-    // verify if user has token in localstorage
-    if(!isLogged){
-      router.push("login")
-    } 
+  function logoutUser(){
+    logout()
+    router.push("login")
   }
 
+  const [isLogged, setIsLogged] = useState<boolean>(false)
+
   useEffect(()=>{
-    isClientLoggedIn()
+    isClientLoggedIn(router, setIsLogged)
+
   }, [])
 
-  return (
-    <div>
+
+  return (isLogged?
+
+    <div className="h-screen w-screen bg-gray-300">
       <h1>Home</h1>
+      <button onClick={logoutUser} className="hover:cursor-pointer hover:opacity-90 p-2 bg-red-500 m-2">Logout</button>
     </div>
-  );
+
+    :<Loading />);
 }

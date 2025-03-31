@@ -1,5 +1,6 @@
 // Access Token: access_token
 
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 
 export function getAccessToken(){
     return localStorage.getItem("access_token")
@@ -19,11 +20,20 @@ export function isAccessTokenValid(token: string | null){
     return false
 }
 
-export function isClientLoggedIn(){
+export function isClientLoggedIn(router: AppRouterInstance, setIsLogged: setBoolean) {
     const token = getAccessToken()
 
+    // verification is ok
     if(isAccessTokenValid(token)){
-        return true
-    }
+        setIsLogged(true)
+        router.push("/")
+        console.log("pusheando o router para /")
+        return
+    } 
+
+    // verification is not ok
+    router.push("/login")
+    console.log("pusheando o router para login")
+    return
 
 }

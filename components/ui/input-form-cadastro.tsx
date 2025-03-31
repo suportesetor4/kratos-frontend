@@ -84,10 +84,10 @@ export default function InputFormCadastro({
       {titulo && <label className={`${addStyleDivTitle ? addStyleDivTitle: ''} tracking-wide text-2xl font-semibold mb-1`}>{titulo} {isRequired && <span className="text-red-500">*</span>}</label>}
 
     
-      <div className={`rounded-lg px-4 py-2 flex items-center border w-full ${addStyleDivInput ? addStyleDivInput: ''} ${erro ? "border-red-500" : "border-gray-300"} `}>
+      <div className={`rounded-lg px-4 py-2 flex items-center border w-full  ${addStyleDivInput ? addStyleDivInput: ''} ${erro ? "border-red-500" : "border-gray-600"} `}>
         <input
           type={tipoInputAtual}
-          className="w-full outline-none"
+          className="w-full outline-none text-black placeholder:text-gray-800"
           placeholder={placeholder}
           value={valor}
           onChange={handleInputChange}
@@ -96,7 +96,7 @@ export default function InputFormCadastro({
         {showPassword && (
           showPass ? (
             <RiEyeOffLine
-              className="w-5 h-5 cursor-pointer"
+              className="w-5 h-5 cursor-pointer text-black"
               onClick={() => {
                 setShowPass(false);
                 setTipoInputAtual("text");
@@ -104,7 +104,7 @@ export default function InputFormCadastro({
             />
           ) : (
             <RiEyeLine
-              className="w-5 h-5 cursor-pointer"
+              className="w-5 h-5 cursor-pointer text-black"
               onClick={() => {
                 setShowPass(true);
                 setTipoInputAtual("password");
