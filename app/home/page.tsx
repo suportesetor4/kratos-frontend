@@ -23,5 +23,12 @@ export default function Home() {
   }, [])
 
 
-  return (<Loading />);
+  return (isLogged?
+
+    <div className="h-full w-full bg-gray-200">
+      <h1>Home</h1>
+      <button onClick={logoutUser} className="hover:cursor-pointer hover:opacity-90 p-2 bg-red-500 m-2">Logout</button>
+    </div>
+
+    :<Loading />);
 }

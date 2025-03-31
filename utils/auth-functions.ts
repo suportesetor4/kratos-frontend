@@ -26,14 +26,12 @@ export function isClientLoggedIn(router: AppRouterInstance, setIsLogged: setBool
     // verification is ok
     if(isAccessTokenValid(token)){
         setIsLogged(true)
-        router.push("/")
-        console.log("pusheando o router para /")
+        router.push("/home")
         return
     } 
 
     // verification is not ok
     router.push("/login")
-    console.log("pusheando o router para login")
     return
 
 }
