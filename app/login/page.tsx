@@ -2,7 +2,7 @@
 
 import LoginForm from "@/components/login/login-form";
 import LoginSection from "@/components/login/login-section";
-import Loading from "@/components/ui/loading";
+import Loading from "@/components/ui-kratos/loading";
 import { isClientLoggedIn } from "@/utils/auth-functions";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { isClientLoggedIn, logout } from "@/utils/auth-functions";
-import Loading from "@/components/ui/loading";
+import Loading from "@/components/ui-kratos/loading";
 
 
 

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { isClientLoggedIn, logout } from "@/utils/auth-functions";
-import Loading from "@/components/ui/loading";
+import Loading from "@/components/ui-kratos/loading";
 
 
 
@@ -25,9 +25,7 @@ export default function Home() {
 
   return (isLogged?
 
-    <div className="h-full w-full bg-gray-200">
-      <h1>Home</h1>
-      <button onClick={logoutUser} className="hover:cursor-pointer hover:opacity-90 p-2 bg-red-500 m-2">Logout</button>
+    <div className="h-full w-full ">
     </div>
 
     :<Loading />);

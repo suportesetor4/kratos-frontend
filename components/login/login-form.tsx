@@ -1,6 +1,6 @@
 "use client"
 
-import InputFormCadastro from "../ui/input-form-cadastro";
+import InputFormCadastro from "../ui-kratos/input-form-cadastro";
 import { useEffect, useState } from "react";
 
 import localFont from 'next/font/local'
