@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { isClientLoggedIn, logout } from "@/utils/auth-functions";
 import Loading from "@/components/ui-kratos/loading";
+import ThemeSwitcher from "@/components/theme/ThemeSwitcher";
 
 
 
@@ -26,6 +27,7 @@ export default function Home() {
   return (isLogged?
 
     <div className="h-full w-full ">
+      <ThemeSwitcher />
     </div>
 
     :<Loading />);
