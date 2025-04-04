@@ -19,9 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="pt-br">
+      <html lang="pt-br" data-theme="light">
         <body className={`${gothamBlack.className} antialiased`}>
-          <ThemeProvider>
+          <ThemeProvider attribute={"data-theme"}>
             {children}
           </ThemeProvider>
 

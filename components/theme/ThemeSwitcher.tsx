@@ -4,6 +4,8 @@ import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import { Sun, Moon } from "lucide-react"
 
+// exportar a função handleTheme no provider pra nao precisar criar ela sempre
+
 export default function ThemeSwitcher(){
     const [mounted, setMounted] = useState(false)
     const { theme, setTheme } = useTheme()
@@ -19,10 +21,9 @@ export default function ThemeSwitcher(){
     function handleTheme(){
         if(theme === "light"){
             setTheme("dark")
-            return
+        }else {
+            setTheme("light")
         }
-
-        setTheme("light")
     }
 
     return(

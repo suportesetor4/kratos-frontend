@@ -151,6 +151,8 @@ function SidebarProvider({
   )
 }
 
+export { SidebarContext }
+
 function Sidebar({
   side = "left",
   variant = "sidebar",

@@ -15,6 +15,7 @@ import { NavUser } from "@/components/ui/nav-user"
 import {
   Sidebar,
   SidebarContent,
+  SidebarContext,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
@@ -42,6 +43,9 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+
+  const { state } = React.useContext(SidebarContext)
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -51,7 +55,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <button className="bg-gradient-to-r from-red-700 to-red-900 text-white p-2 rounded-sm cursor-pointer hover:from-red-600 hover:to-red-800">Novo Chamado</button>
+      {state === "expanded"&&<button className="bg-gradient-to-r from-red-700 to-red-900 text-white p-2 rounded-sm cursor-pointer hover:from-red-600 hover:to-red-800">Novo Chamado</button>}
         <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
