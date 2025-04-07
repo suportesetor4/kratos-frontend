@@ -1,10 +1,10 @@
 // ROTAS
 
 // login (POST)
-// usuarios/cadastrar (POST)
-// usuarios/idUsuario/{p_key} (GET)
+// usuario/cadastrar (POST)
+// usuario/idUsuario/{p_key} (GET)
 
 export default function getApiUrl(slug: string){
-    return `http://localhost:8080/${slug}`
+    return `http://10.13.2.64:8080/${slug}`
 }
 

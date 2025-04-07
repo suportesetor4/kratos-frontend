@@ -20,6 +20,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { useTheme } from "next-themes"
 
 // This is sample data.
 const data = {
@@ -45,9 +46,10 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const { state } = React.useContext(SidebarContext)
+  const { theme } = useTheme()
 
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar className={`${theme === "light" ? "text-black" : "text-red-900"}`} collapsible="icon" {...props}>
       <SidebarHeader>
         
       </SidebarHeader>

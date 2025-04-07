@@ -41,6 +41,7 @@ interface InputFormCadastroProps {
   isRequired?: boolean;
   addStyleDivInput?: string;
   addStyleDivTitle?: string;
+  addStylePlaceholder?: string;
 }
 
 export default function InputFormCadastro({
@@ -55,7 +56,8 @@ export default function InputFormCadastro({
   maskType,
   isRequired,
   addStyleDivInput,
-  addStyleDivTitle
+  addStyleDivTitle,
+  addStylePlaceholder
 }: InputFormCadastroProps) {
   const [valor, setValor] = useState(inputValue);
   const [tipoInputAtual, setTipoInputAtual] = useState(tipoInput);
@@ -84,10 +86,10 @@ export default function InputFormCadastro({
       {titulo && <label className={`${addStyleDivTitle ? addStyleDivTitle: ''} tracking-wide text-2xl font-semibold mb-1`}>{titulo} {isRequired && <span className="text-red-500">*</span>}</label>}
 
     
-      <div className={`rounded-lg px-4 py-2 flex items-center border w-full  ${addStyleDivInput ? addStyleDivInput: ''} ${erro ? "border-red-500" : "border-gray-600"} `}>
+      <div className={`rounded-lg px-4 py-2 flex items-center border w-full text-black ${erro ? "border-red-500" : "border-gray-600"}  ${addStyleDivInput ? addStyleDivInput: ''}  `}>
         <input
           type={tipoInputAtual}
-          className="w-full outline-none text-black placeholder:text-gray-800"
+          className={`w-full outline-none ${addStylePlaceholder ? addStylePlaceholder : ""}`}
           placeholder={placeholder}
           value={valor}
           onChange={handleInputChange}
@@ -96,7 +98,7 @@ export default function InputFormCadastro({
         {showPassword && (
           showPass ? (
             <RiEyeOffLine
-              className="w-5 h-5 cursor-pointer text-black"
+              className="w-5 h-5 cursor-pointer"
               onClick={() => {
                 setShowPass(false);
                 setTipoInputAtual("text");
@@ -104,7 +106,7 @@ export default function InputFormCadastro({
             />
           ) : (
             <RiEyeLine
-              className="w-5 h-5 cursor-pointer text-black"
+              className="w-5 h-5 cursor-pointe"
               onClick={() => {
                 setShowPass(true);
                 setTipoInputAtual("password");

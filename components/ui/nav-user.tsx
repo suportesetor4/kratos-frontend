@@ -82,12 +82,13 @@ export function NavUser({
                 </div>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuItem>
-              <LogOut />
-              <button onClick={()=>{
+            <DropdownMenuItem onClick={()=>{
                 logout()
                 router.push("/login")
-              }}>Sair</button>
+                console.log("sair")
+              }}>
+              <LogOut />
+              <button>Sair</button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
