@@ -5,22 +5,20 @@ import { useRouter } from "next/navigation";
 import { isClientLoggedIn, logout } from "@/utils/auth-functions";
 import Loading from "@/components/ui-kratos/loading";
 import ThemeSwitcher from "@/components/theme/ThemeSwitcher";
+import { useUser } from "@/contexts/UserContext";
 
 
 
 export default function Home() {
   const router = useRouter()
 
-  function logoutUser(){
-    logout()
-    router.push("login")
-  }
+  const { user, getUser } = useUser()
 
   const [isLogged, setIsLogged] = useState<boolean>(false)
 
   useEffect(()=>{
     isClientLoggedIn(router, setIsLogged)
-
+    getUser()
   }, [])
 
 
@@ -28,6 +26,7 @@ export default function Home() {
 
     <div className="h-full w-full ">
       <ThemeSwitcher />
+      {user.nome}
     </div>
 
     :<Loading />);

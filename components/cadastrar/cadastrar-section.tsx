@@ -1,6 +1,6 @@
 import { useTheme } from "next-themes"
 
-export default function LoginSection(){
+export default function CadastrarSection(){
     const { theme }  = useTheme()
 
     return(

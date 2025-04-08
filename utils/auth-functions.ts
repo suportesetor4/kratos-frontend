@@ -1,4 +1,5 @@
 // Access Token: access_token
+// User Id: user_id
 
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 
@@ -12,6 +13,7 @@ export function setAccessToken(token: string){
 
 export function logout(){
     localStorage.setItem("access_token", "")
+    localStorage.setItem("user_id", "")
 }
 
 export function isAccessTokenValid(token: string | null){

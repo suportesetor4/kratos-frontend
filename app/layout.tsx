@@ -3,6 +3,7 @@ import "./globals.css";
 
 import localFont from 'next/font/local'
 import { ThemeProvider } from "next-themes";
+import UserProvider from "@/contexts/UserContext";
  
 // Font files can be colocated inside of `pages`
 const gothamBlack = localFont({ src: '../fonts/gothamBlack.otf' })
@@ -21,9 +22,12 @@ export default function RootLayout({
   return (
       <html lang="pt-br" data-theme="light">
         <body className={`${gothamBlack.className} antialiased`}>
-          <ThemeProvider attribute={"data-theme"}>
-            {children}
-          </ThemeProvider>
+          
+          <UserProvider>
+              <ThemeProvider attribute={"data-theme"}>
+                {children}
+              </ThemeProvider>
+          </UserProvider>
 
         </body>
       </html>

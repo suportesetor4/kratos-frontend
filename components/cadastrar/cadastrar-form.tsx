@@ -6,17 +6,17 @@ import { useEffect, useState } from "react";
 import localFont from 'next/font/local'
 import { useRouter } from "next/navigation";
 import getRandomName from "@/utils/getRandomName";
-import { getUserInfoByLogin, login } from "@/api_calls/auth";
+import { login } from "@/api_calls/auth";
 import { useTheme } from "next-themes";
 import { RiErrorWarningFill } from "react-icons/ri";
-import { useUser } from "@/contexts/UserContext";
 const gothamLight = localFont({ src: '../../fonts/gothamXlight.otf' })
 
 
 
-export default function LoginForm(){
+export default function CadastrarForm(){
     const router = useRouter()
     const { theme }  = useTheme()
+
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -31,18 +31,6 @@ export default function LoginForm(){
     async function handleClickLoginButton(){
         const logou = await login(username, password)
         if(logou){
-
-            const dadosUsuario = await getUserInfoByLogin(username, password)
-            if(!dadosUsuario){
-                setError("Erro ao buscar dados do usuário")    
-                setTimeout(()=>{
-                    setError("")
-                }, 5000)
-
-                return
-            }
-
-            
             router.push("/")
         } else{
             setError("Usuário ou senha incorretos!")    
@@ -69,7 +57,7 @@ export default function LoginForm(){
                     addStyleMain="w-2/3 self-center"
                     addStyleDivInput={`${gothamLight.className} ${theme === "dark" ? "text-white border-white" : "text-neutral-700 border-neutral-700"} py-2 text-lg  font-semibold`}
                     addStyleDivTitle={`${theme === "dark" ? "text-white" : "text-neutral-700"} text-xl `}
-                    addStylePlaceholder={`${theme === "dark" ? "placeholder:text-neutral-300" : "placeholder:text-neutral-500"} `}
+                    addStylePlaceholder={`${theme === "dark" ? "placeholder:text-neutral-300" : "placeholder:text-neutral-700"} `}
                     />
                 <InputFormCadastro 
                     titulo="Senha"
@@ -80,7 +68,7 @@ export default function LoginForm(){
                     addStyleMain="w-2/3 self-center"
                     addStyleDivInput={`${gothamLight.className} ${theme === "dark" ? "text-white border-white" : "text-neutral-700 border-neutral-700"} py-2 text-lg  font-semibold`}
                     addStyleDivTitle={`${theme === "dark" ? "text-white" : "text-neutral-700"} text-xl `}
-                    addStylePlaceholder={`${theme === "dark" ? "placeholder:text-neutral-300" : "placeholder:text-neutral-500"} `}
+                    addStylePlaceholder={`${theme === "dark" ? "placeholder:text-neutral-300" : "placeholder:text-neutral-700"} `}
                 />
 
                 <div className="flex flex-col items-center justify-center gap-2 w-full">
