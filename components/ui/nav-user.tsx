@@ -31,18 +31,19 @@ import {
 } from "@/components/ui/sidebar"
 import { logout } from "@/utils/auth-functions"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
+import { useUser } from "@/contexts/UserContext"
+import nomeSobrenome from "@/utils/nome-sobrenome"
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
-}) {
+export function NavUser() {
   const { isMobile } = useSidebar()
   const router = useRouter()
+
+  const { user, getUser } = useUser()
+
+  useEffect(()=>{
+    getUser()
+  }, [])
 
   return (
     <SidebarMenu>
@@ -54,12 +55,12 @@ export function NavUser({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarImage src={""} alt={user.nome} />
+                <AvatarFallback className="rounded-lg">{nomeSobrenome(user.nome)}</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate font-medium">{user.nome}</span>
+                <span className="truncate text-xs">{user.email.toLowerCase()}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -73,12 +74,12 @@ export function NavUser({
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarImage src={""} alt={user.nome} />
+                  <AvatarFallback className="rounded-lg">{nomeSobrenome(user.nome)}</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate font-medium">{user.nome}</span>
+                  <span className="truncate text-xs">{user.email.toLowerCase()}</span>
                 </div>
               </div>
             </DropdownMenuLabel>

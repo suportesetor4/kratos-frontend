@@ -49,7 +49,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { theme } = useTheme()
 
   return (
-    <Sidebar className={`${theme === "light" ? "text-black" : "text-red-900"}`} collapsible="icon" {...props}>
+    <Sidebar className={`${theme === "light" ? "text-black" : "text-white"}`} collapsible="icon" {...props}>
       <SidebarHeader>
         
       </SidebarHeader>

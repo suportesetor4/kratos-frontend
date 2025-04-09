@@ -10,20 +10,11 @@ import { useEffect, useState } from "react";
 
 export default function Cadastrar(){
   const router = useRouter()
-  
-  const [isLogged, setIsLogged] = useState<boolean>(false)
 
-  useEffect(()=>{
-    isClientLoggedIn(router, setIsLogged)
-
-  }, [])
-
-
-  return(!isLogged?
-    
-      <div className={` w-screen h-screen flex items-center justify-center`}>
-          <CadastrarForm />
+  return(
+      <div className={`w-screen h-screen flex items-center justify-center`}>
           <CadastrarSection />
+          <CadastrarForm />
       </div>
-    : <Loading />)
+  )
 }

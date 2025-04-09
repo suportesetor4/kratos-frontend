@@ -26,6 +26,34 @@ export async function login(login: string, senha: string) : Promise<boolean> {
 
 }
 
+export async function cadastrar(
+    nome: string,
+    telefone: string,
+    email: string,
+    login: string,
+    senha: string
+) : Promise<boolean> {
+    try{
+        const response = await axios.post<LoginParams>(getApiUrl('usuario/cadastrar'), {
+            login: login,
+            nome: nome,
+            telefone: telefone,
+            email: email,
+            senha: senha
+        })
+    
+        if(!(response.status === 201)){
+            return false
+        }
+    
+        return true
+    } catch(error){
+        console.log(error)
+        return false
+    }
+
+}
+
 export async function getUserInfoByLogin(login: string, senha: string){
 
     try{

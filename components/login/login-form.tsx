@@ -88,7 +88,7 @@ export default function LoginForm(){
                     onClick={handleClickLoginButton}
                     >Login</button>
                     <p className={`${gothamLight.className} ${theme === "dark" ? "text-white" : "text-red-900 "} font-semibold text-center text-sm hover:underline cursor-pointer `}>Esqueceu a senha?</p>
-                    <p className={`${gothamLight.className} ${theme === "dark" ? "text-white" : "text-red-900 "} font-semibold text-center text-sm hover:underline cursor-pointer `}>Registrar-se</p>
+                    <p onClick={()=>{router.push("/cadastrar")}} className={`${gothamLight.className} ${theme === "dark" ? "text-white" : "text-red-900 "} font-semibold text-center text-sm hover:underline cursor-pointer `}>Registrar-se</p>
                 </div>
 
                 <div className={`fixed bottom-2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  ${error.length > 0 ? "opacity-100": "opacity-0"} ${theme === "dark" ? "text-black bg-white" : "text-white bg-black"} w-1/3 self-center text-center text-lg font-semibold flex justify-center items-center gap-2 p-2 rounded-sm transition-all`}>
