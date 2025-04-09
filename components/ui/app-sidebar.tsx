@@ -45,7 +45,13 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
-  const { state } = React.useContext(SidebarContext)
+  const context = React.useContext(SidebarContext);
+
+  if (!context) {
+    throw new Error("Contexto da sidebar não foi carregado corretamente!");
+  }
+
+  const { state } = context;
   const { theme } = useTheme()
 
   return (
@@ -58,7 +64,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarFooter>
       {state === "expanded"&&<button className="bg-gradient-to-r from-red-700 to-red-900 text-white p-2 rounded-sm cursor-pointer hover:from-red-600 hover:to-red-800">Novo Chamado</button>}
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
