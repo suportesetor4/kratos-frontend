@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: 'upgrade-insecure-requsts'
+            value: 'upgrade-insecure-requests'
           }
         ]
       }
