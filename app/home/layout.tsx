@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <SidebarProvider className={` `}>
       <AppSidebar />
-      <main>
+      <main className="overflow-x-hidden">
         <SidebarTrigger />
         {children}
       </main>

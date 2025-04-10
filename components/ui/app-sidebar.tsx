@@ -3,6 +3,7 @@
 import * as React from "react"
 import {
   Gauge,
+  Map,
   Menu,
 } from "lucide-react"
 
@@ -40,6 +41,11 @@ const data = {
       url: "#",
       icon: Menu,
     },
+    {
+      name: "Mapa do setor IV",
+      url: "/home/mapa-setor-4",
+      icon: Map,
+    }
   ],
 }
 
@@ -55,7 +61,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { theme } = useTheme()
 
   return (
-    <Sidebar className={`${theme === "light" ? "text-black" : "text-white"}`} collapsible="icon" {...props}>
+    <Sidebar className={`text-black ${theme === "light" ? "text-black" : "text-white"} `} collapsible="icon" {...props}>
       <SidebarHeader>
         
       </SidebarHeader>
