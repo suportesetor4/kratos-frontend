@@ -1,13 +1,14 @@
 "use client"
 
 import { OctagonX } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 type Role = "ADMIN" | "GERAL"
 const role_user : Role = "GERAL"
 
 interface Sala {
     nome: string;
-    status: "OK" | "PENDENTE" | "ANDAMENTO" | "INTERDITADO";
+    status: "OK" | "PENDENTE" | "ANDAMENTO" | "INTERDITADO" | "VERIFICAR";
     role: Role;
     tipo: "LAB" | "SALA" | "AUD" | "BANHEIRO" | "OUTRO";
 }
@@ -67,7 +68,7 @@ let mapa : Bloco[] = [
             },
             {
                 nome: "A6",
-                status: "OK",
+                status: "VERIFICAR",
                 role: "GERAL",
                 tipo: "SALA"
             },
@@ -618,7 +619,7 @@ mapa = mapa.map(bloco => ({
 
 function Mapa(){
 
-
+    const router = useRouter()
 
     return(
         <div className="w-4/5 h-3/4 border-2 p-5 flex flex-col bg-neutral-100">
@@ -628,6 +629,7 @@ function Mapa(){
                     height: `50px`
                 }}
                 >
+
                     <div className={`w-[45%] h-full ${bloco.sentido === "norte" ? "self-end " : "self-start"}`}
 
                     >
@@ -636,7 +638,9 @@ function Mapa(){
                             <h1 className={`text-sm self-center `}>{bloco.salas.length === 0 ? "" : bloco.bloco}</h1>
                             {mapa[index].salas.map((sala, index)=>(
 
-                                 <div key={index} className={`h-full border-2 text-sm flex justify-center items-center cursor-pointer transition-all duration-300 ${sala.status === "PENDENTE" ? "bg-red-500 animate-bounce hover:bg-red-600": ""} ${sala.status === "ANDAMENTO" ? "bg-yellow-300 animate-pulse hover:bg-yellow-300": ""} ${sala.status === "OK" ? "bg-blue-300 hover:bg-blue-400": ""} ${sala.status === "INTERDITADO" ? " bg-blue-300  text-black hover:bg-neutral-100": ""} gap-1 ${sala.nome.length === 0 ? "bg-neutral-100 border-none hover:bg-neutral-100 cursor-" : ""}`}
+                                 <div key={index} onClick={()=>{
+                                    router.push(`/home/mapa-setor-4/${sala.nome}`)
+                                 }} className={`h-full border-2 text-sm flex justify-center items-center cursor-pointer transition-all duration-300 ${sala.status === "PENDENTE" ? "bg-red-500 animate-bounce hover:bg-red-600": ""} ${sala.status === "VERIFICAR" ? "bg-yellow-300 animate-pulse hover:bg-yellow-300": ""} ${sala.status === "ANDAMENTO" ? "bg-orange-400 hover:bg-orange-400": ""} ${sala.status === "OK" ? "bg-blue-300 hover:bg-blue-400": ""} ${sala.status === "INTERDITADO" ? " bg-blue-300  text-black hover:bg-neutral-100": ""} gap-1 ${sala.nome.length === 0 ? "bg-neutral-100 border-none hover:bg-neutral-100 cursor-" : ""}`}
                                      style={{ 
                                          width: `${100 / bloco.salas.length}%` 
                                      }}
@@ -656,13 +660,26 @@ function Mapa(){
     )
 }
 
-export default function MapaSetor4(){
+function Sumario(){
+    return(
+    <div className="w-4/5 self-center">
+        <ul className="flex items-start gap-4">
+            <li className="flex items-center justify-center gap-1"><div className="w-6 h-6 border-2 border-neutral-700 bg-blue-300"></div>Ok</li>
+            <li className="flex items-center justify-center gap-1"><div className="w-6 h-6 border-2 border-neutral-700 bg-yellow-300"></div>Verificar</li>
+            <li className="flex items-center justify-center gap-1"><div className="w-6 h-6 border-2 border-neutral-700 bg-red-500"></div>Pendente</li>
+            <li className="flex items-center justify-center gap-1"><div className="w-6 h-6 border-2 border-neutral-700 bg-orange-400"></div>Andamento</li>
+            <li className="flex items-center justify-center gap-1"><div className="w-6 h-6 border-2 border-neutral-700 bg-blue-300 flex items-center justify-center"><OctagonX className="text-red-700 w-6 h-6"/></div>Interditado</li>
+        </ul>
+    </div>
+    )
+}
 
-    
+export default function MapaSetor4(){
     
     return(
         <div className="w-screen h-screen flex flex-col justify-center items-center gap-5">
             <h1 className="text-4xl text-neutral-900">Mapa do Setor IV</h1>
+            <Sumario />
             <Mapa 
 
             />
