@@ -272,7 +272,7 @@ let mapa : Bloco[] = [
             },
             {
                 nome: "F3",
-                status: "OK",
+                status: "ANDAMENTO",
                 role: "GERAL",
                 tipo: "SALA"
             },
@@ -374,7 +374,7 @@ let mapa : Bloco[] = [
         salas: [
             {
                 nome: "ADMIN",
-                status: "ANDAMENTO",
+                status: "OK",
                 role: "GERAL",
                 tipo: "SALA"
             },

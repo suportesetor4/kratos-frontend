@@ -33,7 +33,7 @@ const data = {
   projects: [
     {
       name: "Painel",
-      url: "#",
+      url: "/home",
       icon: Gauge,
     },
     {
