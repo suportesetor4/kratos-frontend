@@ -18,6 +18,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
+import { useTheme } from "next-themes"
 
 export function NavProjects({
   projects,
@@ -30,13 +31,15 @@ export function NavProjects({
 }) {
   const { isMobile } = useSidebar()
 
+  const { theme } = useTheme()
+
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel className="text-2xl mb-2 bg-gradient-to-r from-red-700 to-red-900 text-transparent bg-clip-text">Kratos</SidebarGroupLabel>
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem className="w-full" key={item.name}>
-            <SidebarMenuButton className="hover:bg-gradient-to-r hover:from-red-700 hover:to-red-900 hover:text-white w-full h-full p-2 transition-colors ease-linear tracking-wide" asChild>
+            <SidebarMenuButton className={`w-full h-full p-2 transition-colors ease-linear tracking-wide ${theme === "light" ? "" : ""}`} asChild>
               <Link href={item.url}>
                 <item.icon/>
                 <span className="text-[16px]">{item.name}</span>

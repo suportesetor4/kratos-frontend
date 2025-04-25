@@ -24,8 +24,7 @@ export default function Home() {
 
   return (isLogged?
 
-    <div className="h-full w-full ">
-      <ThemeSwitcher />
+    <div className="h-screen w-screen ">
       {user.nome}
     </div>
 

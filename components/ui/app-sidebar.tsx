@@ -61,7 +61,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { theme } = useTheme()
 
   return (
-    <Sidebar className={`text-black ${theme === "light" ? "text-black" : "text-white"} `} collapsible="icon" {...props}>
+    <Sidebar className={`text-black `} collapsible="icon" {...props}>
       <SidebarHeader>
         
       </SidebarHeader>
@@ -69,7 +69,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-      {state === "expanded"&&<button className="bg-gradient-to-r from-red-700 to-red-900 text-white p-2 rounded-sm cursor-pointer hover:from-red-600 hover:to-red-800">Novo Chamado</button>}
         <NavUser />
       </SidebarFooter>
       <SidebarRail />
