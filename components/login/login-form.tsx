@@ -50,14 +50,13 @@ export default function LoginForm(){
                 setError("")
             }, 5000)
         }
-
     }
 
     return(
         <div className={`${theme === "dark" ? "bg-neutral-900" :"bg-white"} flex flex-col w-1/2 h-screen justify-center items-center gap-5 relative`}>
 
             <div className="w-2/3 my-5">
-                <h1 className={`text-6xl font-bold tracking-tighter  text-transparent bg-clip-text ${theme === "dark" ? "bg-red-800" : "bg-red-900 "}`}>KRATOS</h1>
+                <h1 className={`text-6xl font-bold tracking-tighter  text-transparent bg-clip-text ${theme === "dark" ? "bg-white" : "bg-black"}`}>KRATOS</h1>
             </div>
 
             <div className="flex flex-col w-full gap-4 text-2xl">
@@ -84,11 +83,13 @@ export default function LoginForm(){
                 />
 
                 <div className="flex flex-col items-center justify-center gap-2 w-full">
-                    <button className={` w-2/3 p-3 rounded-sm cursor-pointer hover:opacity-85 bg-red-900 text-white`}
+                    <button className={`transition-all w-2/3 p-3 rounded-sm cursor-pointer hover:opacity-85 bg-blue-400 text-white`}
                     onClick={handleClickLoginButton}
                     >Login</button>
-                    <p className={`${gothamLight.className} ${theme === "dark" ? "text-white" : "text-red-900 "} font-semibold text-center text-sm hover:underline cursor-pointer `}>Esqueceu a senha?</p>
-                    <p onClick={()=>{router.push("/cadastrar")}} className={`${gothamLight.className} ${theme === "dark" ? "text-white" : "text-red-900 "} font-semibold text-center text-sm hover:underline cursor-pointer `}>Registrar-se</p>
+                    <p onClick={()=>{
+                        router.push("/esqueceu-senha")
+                    }} className={`${gothamLight.className} ${theme === "dark" ? "text-white" : "text-blue-400 "} font-semibold text-center text-sm hover:underline cursor-pointer `}>Esqueceu a senha?</p>
+                    <p onClick={()=>{router.push("/cadastrar")}} className={`${gothamLight.className} ${theme === "dark" ? "text-white" : "text-blue-400 "} font-semibold text-center text-sm hover:underline cursor-pointer `}>Registrar-se</p>
                 </div>
 
                 <div className={`fixed bottom-2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  ${error.length > 0 ? "opacity-100": "opacity-0"} ${theme === "dark" ? "text-black bg-white" : "text-white bg-black"} w-1/3 self-center text-center text-lg font-semibold flex justify-center items-center gap-2 p-2 rounded-sm transition-all`}>
