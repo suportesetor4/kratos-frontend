@@ -21,7 +21,7 @@ export default function Login(){
 
   return(!isLogged?
     
-      <div className={` w-screen h-screen flex items-center justify-center`}>
+      <div className={` w-screen h-screen flex `}>
           <LoginSection />
           <LoginForm />
       </div>

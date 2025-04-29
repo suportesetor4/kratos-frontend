@@ -56,7 +56,7 @@ export default function LoginForm(){
         <div className={`${theme === "dark" ? "bg-neutral-900" :"bg-white"} flex flex-col w-1/2 h-screen justify-center items-center gap-5 relative`}>
 
             <div className="w-2/3 my-5">
-                <h1 className={`text-6xl font-bold tracking-tighter  text-transparent bg-clip-text ${theme === "dark" ? "bg-white" : "bg-black"}`}>KRATOS</h1>
+                <h1 className={`text-6xl font-bold tracking-tighter text-black`}>Login</h1>
             </div>
 
             <div className="flex flex-col w-full gap-4 text-2xl">
