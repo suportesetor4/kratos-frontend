@@ -4,14 +4,15 @@ import { verifyEmailTokenStatus } from "@/api_calls/auth"
 import localFont from "next/font/local"
 import Image from "next/image"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 const gothamLight = localFont({ src: '../../../fonts/gothamXlight.otf' })
 
 import error from '@/public/error.gif'
 import success from '@/public/success.gif'
 import loading from '@/public/loading.gif'
+import Loading from "@/components/ui-kratos/loading"
 
-export default function Status(){
+function StatusPage(){
 
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -99,5 +100,13 @@ export default function Status(){
 
             }
         </div>
+    )
+}
+
+export default function Status(){
+    return(
+        <Suspense fallback={<Loading />}>
+            <StatusPage />
+        </Suspense>
     )
 }

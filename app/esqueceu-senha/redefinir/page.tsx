@@ -2,7 +2,7 @@
 
 import InputFormCadastro from "@/components/ui-kratos/input-form-cadastro"
 import localFont from "next/font/local"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { RiErrorWarningFill } from "react-icons/ri"
 import { useRouter, useSearchParams } from "next/navigation"
 import { resetPassword, verifyEmailTokenStatus } from "@/api_calls/auth"
@@ -12,9 +12,9 @@ const gothamLight = localFont({ src: '../../../fonts/gothamXlight.otf' })
 import ErrorIcon from '@/public/error.gif'
 import loading from '@/public/loading.gif'
 import success from '@/public/success.gif'
+import Loading from "@/components/ui-kratos/loading"
 
-
-export default function Redifinir(){
+function RedefinirPage(){
 
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -159,5 +159,13 @@ export default function Redifinir(){
 
 
         </div>
+    )
+}
+
+export default function Redefinir(){
+    return(
+        <Suspense fallback={<Loading />}>
+            <RedefinirPage />
+        </Suspense>
     )
 }
