@@ -38,7 +38,12 @@ function StatusPage(){
     }
 
     useEffect(()=>{
-        verifyToken()
+        if(!token){
+            router.push('/login')
+        } else {
+            verifyToken()
+
+        }
     }, [])
     
     return(

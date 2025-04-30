@@ -1,7 +1,10 @@
 "use client"
 
+import Loading from "@/components/ui-kratos/loading";
+import { isClientLoggedIn } from "@/utils/auth-functions";
 import { OctagonX } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Role = "ADMIN" | "GERAL"
 const role_user : Role = "GERAL"
@@ -675,8 +678,15 @@ function Sumario(){
 }
 
 export default function MapaSetor4(){
+    const router = useRouter()
+
+    const [isLogged, setIsLogged] = useState<boolean>(false)
+
+    useEffect(()=>{
+      isClientLoggedIn(router, setIsLogged)
+    }, [])
     
-    return(
+    return(isLogged ?
         <div className="w-screen h-screen flex flex-col justify-center items-center gap-5">
             <h1 className="text-4xl text-neutral-900">Mapa do Setor IV</h1>
             <Sumario />
@@ -686,5 +696,5 @@ export default function MapaSetor4(){
 
 
         </div>
-    )
+    : <Loading />)
 }

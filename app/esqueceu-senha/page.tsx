@@ -42,7 +42,11 @@ export default function EsqueceuSenha(){
     }
 
     return(
-        <div className="flex items-center justify-end">
+        <div onKeyDown={(e)=>{
+            if(e.key === "Enter"){
+                handleSendEmail()
+            }
+        }} className="flex items-center justify-end">
             {!emailEnviado&&!sendingEmail&&<div className="h-screen w-1/2 flex flex-col justify-center items-center">
                 <h1 className={`w-2/3 text-6xl font-bold tracking-tighter text-transparent bg-clip-text bg-black`}>Redefinir Senha</h1>
                 <p className={`${gothamLight.className} mb-5 w-2/3 text-sm`}>Esqueceu a senha? Envie um email de recuperação para o email conectado a sua conta</p>

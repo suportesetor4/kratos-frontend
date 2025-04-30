@@ -53,7 +53,11 @@ export default function LoginForm(){
     }
 
     return(
-        <div className={`${theme === "dark" ? "bg-neutral-900" :"bg-white"} flex flex-col w-1/2 h-screen justify-center items-center relative`}>
+        <div onKeyDown={(e)=>{
+            if(e.key === "Enter"){
+                handleClickLoginButton()
+            }
+        }} className={`${theme === "dark" ? "bg-neutral-900" :"bg-white"} flex flex-col w-1/2 h-screen justify-center items-center relative`}>
 
             <div className="w-2/3 my-5">
                 <h1 className={`text-6xl font-bold tracking-tighter text-black`}>Login</h1>

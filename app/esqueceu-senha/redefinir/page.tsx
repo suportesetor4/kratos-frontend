@@ -46,7 +46,11 @@ function RedefinirPage(){
     }
 
     useEffect(()=>{
-        verifyToken()
+        if(!token){
+            router.push('/login')
+        } else{
+            verifyToken()
+        }
     }, [])
 
     async function redefinirSenha(){
@@ -67,7 +71,11 @@ function RedefinirPage(){
     }
 
     return(
-        <div className="flex items-center justify-end">
+        <div onKeyDown={(e)=>{
+            if(e.key === "Enter"){
+                redefinirSenha()
+            }
+        }} className="flex items-center justify-end">
             {!verifyingToken&&tokenStatusOk&&!redefiniuSenha&&
             <div className="h-screen w-1/2 flex flex-col justify-center items-center">
                 <h1 className={`w-2/3 text-6xl font-bold tracking-tighter text-transparent bg-clip-text bg-black`}>Redefinir</h1>

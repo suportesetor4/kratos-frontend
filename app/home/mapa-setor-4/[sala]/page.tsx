@@ -1,10 +1,12 @@
 "use client"
 
 import InputFormCadastro from "@/components/ui-kratos/input-form-cadastro";
+import Loading from "@/components/ui-kratos/loading";
 import TextareaFormCadastro from "@/components/ui-kratos/textarea-form-cadastro";
+import { isClientLoggedIn } from "@/utils/auth-functions";
 import { Check, CheckCheck, ClipboardPen, List, Plus, Square, SquareCheck, X } from "lucide-react";
-import { useParams } from "next/navigation"
-import { Dispatch, SetStateAction, useState } from "react";
+import { useParams, useRouter } from "next/navigation"
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface Chamado {
     id: number;
@@ -24,7 +26,16 @@ function ListaChamados({
     setChamados,
     setModalAberto
 }: ListaChamadosParams){
-    return(
+
+    const router = useRouter()
+
+    const [isLogged, setIsLogged] = useState<boolean>(false)
+
+    useEffect(()=>{
+      isClientLoggedIn(router, setIsLogged)
+    }, [])
+
+    return( isLogged ?
         <div className="w-1/4 h-1/2 p-5 flex flex-col gap-5 border border-neutral-200 rounded-sm shadow ml-10">
             <h1 className="text-3xl text-neutral-800 self-start flex items-center justify-center gap-5 p-1">
                 <List className="w-7 h-7 text-neutral-800"/> Chamados Pendentes
@@ -60,7 +71,7 @@ function ListaChamados({
                 <Plus /> Criar Chamado
             </div>
         </div>
-    )
+    : <Loading />)
 }
 
 export default function Sala(){
