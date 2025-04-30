@@ -11,21 +11,6 @@ import { useTheme } from "next-themes";
 import { RiErrorWarningFill } from "react-icons/ri";
 const gothamLight = localFont({ src: '../../fonts/gothamXlight.otf' })
 
-/*
-
-    interface User {
-        id?: string;
-        login: string;
-        nome: string;
-        email: string;
-        telefone: string;
-        papel: Papeis;
-
-    }
-
-*/
-
-
 export default function CadastrarForm(){
     const router = useRouter()
     const { theme }  = useTheme()
@@ -98,7 +83,7 @@ export default function CadastrarForm(){
     }
 
     return(
-        <div className={`${theme === "dark" ? "bg-neutral-900" :"bg-white"} flex flex-col w-1/2 h-screen justify-center items-center gap-5 relative`}>
+        <div className={`${theme === "dark" ? "bg-neutral-900" :"bg-white"} flex flex-col w-1/2 h-screen justify-center items-center relative`}>
 
             <div className="w-2/3 my-5">
                 <h1 className={`text-6xl font-bold tracking-tighter text-blue-400}`}>Cadastrar-se</h1>

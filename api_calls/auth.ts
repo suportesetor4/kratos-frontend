@@ -112,8 +112,8 @@ export async function sendEmailForgotPassword(email: string){
 
         return true
     } catch(e){
-        return false
         console.log(e)
+        return false
     }
 
 }
@@ -133,7 +133,23 @@ export async function verifyEmailTokenStatus(token: string){
         return true
 
     } catch(e){
-        return false
         console.log(e)
+        return false
+    }
+}
+
+export async function resetPassword(token: string, newPassword: string){
+    try{
+        const response = await axios.post(getApiUrl(`api/auth/reset-password?token=${token}`), {
+            newPassword
+        })
+        if(!(response.status === 200)){
+            return false
+        }
+
+        return true
+    } catch(e){
+        console.log(e)
+        return false
     }
 }

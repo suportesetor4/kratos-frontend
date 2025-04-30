@@ -45,12 +45,14 @@ export default function Status(){
 
             {verifyingToken&&
                 <div className="flex items-center justify-center flex-col">
-                    <h1 className={`text-6xl font-bold tracking-tighter text-black`}>Validando Acesso</h1>
+                    <h1 className={`text-6xl font-bold tracking-tighter text-black flex gap-2 items-center`}>Validando Acesso
+                        <Image 
+                            alt=""
+                            src={loading}
+                        />
+                    </h1>
                     <p className={`${gothamLight.className} mb-5 text-sm`}>Validando o acesso à redefinição de senha</p>
-                    <Image 
-                        alt=""
-                        src={loading}
-                    />
+
 
                 </div>
 
@@ -58,16 +60,17 @@ export default function Status(){
             {
                 tokenStatusOk&&
                 <div className="flex items-center justify-center flex-col">
-                    <h1 className={`text-6xl font-bold tracking-tighter text-black`}>Acesso Validado</h1>
-                    <p className={`${gothamLight.className} mb-5 text-sm`}>Acesso validado, clique no botão abaixo para ser redirecionado à página de redefinição de senha</p>
-                    <Image 
+                    <h1 className={`text-6xl font-bold tracking-tighter text-black flex gap-2 items-center`}>Acesso Validado 
+                        <Image 
                         alt=""
                         src={success}
 
-                    />
+                    /></h1>
+                    <p className={`${gothamLight.className} text-sm`}>Acesso validado, clique no botão abaixo para ser redirecionado à página de redefinição de senha</p>
+
                 <button className={`text-2xl w-2/3 p-3 mt-5 rounded-sm cursor-pointer hover:opacity-85 bg-blue-400 text-white`}
                     onClick={()=>{
-                        router.push("/esqueceu-senha/redefinir")
+                        router.push(`/esqueceu-senha/redefinir?token=${token}`)
                     }}
                 >Redefinir Senha</button>
 
@@ -77,13 +80,15 @@ export default function Status(){
             {
                 !tokenStatusOk&&!verifyingToken&&
                 <div className="flex items-center justify-center flex-col">
-                    <h1 className={`text-6xl font-bold tracking-tighter text-black`}>Acesso Inválido</h1>
-                    <p className={`${gothamLight.className} mb-5 text-sm`}>A confirmação de validação de acesso está incorreta, tente novamente mais tarde</p>
+                    <h1 className={`text-6xl font-bold tracking-tighter text-black flex gap-2 items-center`}>Acesso Inválido
                     <Image 
                         alt=""
                         src={error}
 
                     />
+                    </h1>
+                    <p className={`${gothamLight.className} text-sm`}>A validação de acesso está incorreta ou expirada, tente novamente mais tarde</p>
+
                     <button className={`text-2xl w-2/3 p-3 mt-5 rounded-sm cursor-pointer hover:opacity-85 bg-blue-400 text-white`}
                     onClick={()=>{
                         router.push("/login")
